@@ -14,7 +14,7 @@ android {
 //        targetSdk = 34
 //        versionCode = 1
 //        versionName = "1.0"
-
+        multiDexEnabled = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
@@ -51,6 +51,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":domain"))
 
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)
@@ -60,7 +61,6 @@ dependencies {
     implementation(libs.ui.graphics)
     implementation(libs.ui.tooling.preview)
     implementation(libs.material3)
-    implementation(project(":domain"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
@@ -68,7 +68,6 @@ dependencies {
     androidTestImplementation(libs.ui.test.junit4)
     debugImplementation(libs.ui.tooling)
     debugImplementation(libs.ui.test.manifest)
-
     implementation(libs.retrofit2)
     implementation(libs.retrofit2.kotlin)
     implementation(libs.retrofit2.kotlin.coroutines)
