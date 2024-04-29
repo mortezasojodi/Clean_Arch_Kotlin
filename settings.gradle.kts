@@ -17,3 +17,4 @@ rootProject.name = "CleanAuth"
 include(":app")
 include(":domain")
 include(":data")
+include(":compose-routing")

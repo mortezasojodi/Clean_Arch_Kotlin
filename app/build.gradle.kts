@@ -1,7 +1,10 @@
+import org.jetbrains.kotlin.kapt3.base.Kapt
+
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
+//    alias(libs.plugins.org.jetbrains.kotlin.kapt)
 }
 
 android {
@@ -51,10 +54,14 @@ android {
 }
 
 dependencies {
+    implementation(project(":compose-routing"))
+    implementation(project(":data"))
+    implementation(project(":domain"))
 
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.activity.compose)
+
     implementation(platform(libs.compose.bom))
     implementation(libs.ui)
     implementation(libs.ui.graphics)
@@ -67,4 +74,7 @@ dependencies {
     androidTestImplementation(libs.ui.test.junit4)
     debugImplementation(libs.ui.tooling)
     debugImplementation(libs.ui.test.manifest)
+
+//    implementation(libs.dagger)
+//    kapt(libs.dagger.compiler)
 }
