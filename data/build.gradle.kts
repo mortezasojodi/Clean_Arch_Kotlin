@@ -2,6 +2,8 @@
 plugins {
     id("com.android.library")
     alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.org.jetbrains.kotlin.kapt)
+    id(id= "dagger.hilt.android.plugin")
 }
 
 android {
@@ -41,7 +43,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
+        kotlinCompilerExtensionVersion = "1.5.3"
     }
     packaging {
         resources {
@@ -71,4 +73,14 @@ dependencies {
     implementation(libs.retrofit2)
     implementation(libs.retrofit2.kotlin)
     implementation(libs.retrofit2.kotlin.coroutines)
+
+    implementation(libs.dagger)
+    kapt(libs.dagger.compiler)
+
+//    hilt
+    implementation(libs.hilt.android)
+    kapt(libs.dagger.hilt.compiler)
+    implementation(libs.hilt.work)
+    kapt(libs.hilt.compiler)
+    implementation(libs.work.runtime)
 }
