@@ -20,6 +20,7 @@ fun ProductData.toDomain() = ProductEntity(
     image = image
 )
 
+
 data class ProductData(
     @SerializedName("id")    val id: Int,
     @SerializedName("title")   val title: String,
