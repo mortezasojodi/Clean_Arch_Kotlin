@@ -4,7 +4,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.org.jetbrains.kotlin.kapt)
-    id(id= "dagger.hilt.android.plugin")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -13,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId = "com.msa.cleanauth"
-        minSdk = 26
+        minSdk = 21
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -39,6 +39,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
+        freeCompilerArgs += "-Xcontext-receivers"
         jvmTarget = "1.8"
     }
     buildFeatures {
@@ -75,15 +76,23 @@ dependencies {
     androidTestImplementation(libs.ui.test.junit4)
     debugImplementation(libs.ui.tooling)
     debugImplementation(libs.ui.test.manifest)
+    implementation(libs.retrofit2)
+    implementation(libs.retrofit2.kotlin)
+    implementation(libs.retrofit2.kotlin.coroutines)
 
-    implementation(libs.dagger)
-    kapt(libs.dagger.compiler)
-
-//    hilt
+    //hilt
     implementation(libs.hilt.android)
     kapt(libs.dagger.hilt.compiler)
     implementation(libs.hilt.work)
     kapt(libs.hilt.compiler)
     implementation(libs.work.runtime)
+    implementation(libs.coil.compose)
+
+    //multidex
+    implementation(libs.multidex)
+
+    //shimmer
+    implementation(libs.compose.shimmer)
+
 
 }

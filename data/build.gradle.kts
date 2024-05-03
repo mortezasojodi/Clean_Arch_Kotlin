@@ -37,6 +37,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
+        freeCompilerArgs += "-Xcontext-receivers"
         jvmTarget = "1.8"
     }
     buildFeatures {
@@ -74,13 +75,9 @@ dependencies {
     implementation(libs.retrofit2.kotlin)
     implementation(libs.retrofit2.kotlin.coroutines)
 
-    implementation(libs.dagger)
-    kapt(libs.dagger.compiler)
-
-//    hilt
+    //Hilt
     implementation(libs.hilt.android)
     kapt(libs.dagger.hilt.compiler)
     implementation(libs.hilt.work)
     kapt(libs.hilt.compiler)
-    implementation(libs.work.runtime)
 }

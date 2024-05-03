@@ -2,8 +2,8 @@
 plugins {
     id("com.android.library")
     alias(libs.plugins.kotlinAndroid)
-    alias(libs.plugins.org.jetbrains.kotlin.kapt)
-    id(id= "dagger.hilt.android.plugin")
+//    alias(libs.plugins.org.jetbrains.kotlin.kapt)
+//    id(id= "dagger.hilt.android.plugin")
 }
 
 android {
@@ -37,6 +37,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
+        freeCompilerArgs += "-Xcontext-receivers"
         jvmTarget = "1.8"
     }
     buildFeatures {
@@ -71,13 +72,13 @@ dependencies {
     debugImplementation(libs.ui.test.manifest)
     implementation(libs.retrofit2.kotlin)
 
-    implementation(libs.dagger)
-    kapt(libs.dagger.compiler)
-
-//    hilt
-    implementation(libs.hilt.android)
-    kapt(libs.dagger.hilt.compiler)
-    implementation(libs.hilt.work)
-    kapt(libs.hilt.compiler)
-    implementation(libs.work.runtime)
+//    implementation(libs.dagger)
+//    kapt(libs.dagger.compiler)
+//
+////    hilt
+//    implementation(libs.hilt.android)
+//    kapt(libs.dagger.hilt.compiler)
+//    implementation(libs.hilt.work)
+//    kapt(libs.hilt.compiler)
+//    implementation(libs.work.runtime)
 }

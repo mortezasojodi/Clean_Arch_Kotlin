@@ -1,6 +1,7 @@
 package com.msa.cleanauth
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
@@ -15,6 +16,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.msa.cleanauth.ui.screens.home.HomeScreen
 import com.msa.cleanauth.ui.screens.home.ProductViewModel
+import com.msa.cleanauth.ui.screens.productDetailRoute
+
 import com.msa.cleanauth.ui.theme.CleanAuthTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -24,34 +27,27 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private val viewModel: ProductViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContent {
-            CleanAuthTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
 
-                    HomeScreen( productViewModel = viewModel)
-                }
+            CleanAuthTheme {
+                MainScreen(viewModel)
             }
         }
     }
 }
-
+@ExperimentalAnimationApi
+@ExperimentalFoundationApi
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+fun MainScreen(viewModel: ProductViewModel) {
+    Surface(
+        modifier = Modifier.fillMaxSize(),
+        color = MaterialTheme.colorScheme.background
+    ) {
+                 }
+        HomeScreen(
+            productViewModel = viewModel,
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    CleanAuthTheme {
-        Greeting("Android")
+        )
     }
-}
